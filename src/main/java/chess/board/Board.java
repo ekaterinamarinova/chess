@@ -3,15 +3,10 @@ package chess.board;
 public class Board {
     private static Spot[][] spots = new Spot[8][8];
 
-    public static void main(String[] args) {
-        printBoard();
-    }
-
     /**
      * Fills the boards' spots
      */
-    public static void setBoard() {
-
+    private static void setBoard() {
         for (int row = 0; row < spots.length; row++) {
             for (int column = 0; column < spots[row].length; column++) {
                 Spot spot = new Spot();
@@ -22,10 +17,33 @@ public class Board {
                     spots[row][column].setSymbol("X");
                 } else {
                     spots[row][column] = spot;
-                    spots[row][column].setSymbol("|_|");
+                    spots[row][column].setSymbol("| |");
+                }
+            }
+        }
+
+        for (int col = 0; col < spots.length; col++) {
+            for (int row = 0; row < spots[col].length; row++) {
+
+                ///*putting the pieces on the board*/
+                if (row == 1 || row == 6) {
+                    spots[row][col].setSymbol("|P");
                 }
 
+                if (row == 0 || row == 7) {
+                    spots[row][0].setSymbol("|R");
+                    spots[row][7].setSymbol("|R");
 
+                    spots[row][1].setSymbol("|B");
+                    spots[row][6].setSymbol("|B");
+
+                    spots[row][2].setSymbol("|H");
+                    spots[row][5].setSymbol("|H");
+
+                    spots[row][3].setSymbol("|Q");
+                    spots[row][4].setSymbol("|K");
+
+                }
             }
         }
     }
@@ -55,7 +73,7 @@ public class Board {
         System.out.println("  A B C D E F G H  ");
     }
 
-    public Spot[][] getSpots() {
+    public Spot[][] getBoardSpots() {
         return spots;
     }
 }

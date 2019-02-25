@@ -1,14 +1,18 @@
 package chess.piece;
 
+import chess.board.Board;
 import chess.board.Spot;
 
 public abstract class Piece {
+    private Board b = new Board();
+
+    private Spot[][] board = b.getBoardSpots();
 
     private Spot spot = new Spot();
 
     private String symbol = spot.getSymbol();
 
-    public void move() {
+    public void move(/*Spot[][] currentBoard*/) {
         //TODO: implement movements
     }
 
