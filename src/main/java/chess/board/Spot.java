@@ -3,13 +3,13 @@ package chess.board;
 import chess.piece.Piece;
 import com.sun.istack.internal.NotNull;
 
-public class Spot {
+public class Spot<T> {
 
     private String symbol;
 
     private Piece piece;
 
-    public Spot(){
+    public Spot() {
         this.symbol = "| ";
     }
 
@@ -34,7 +34,7 @@ public class Spot {
         return piece;
     }
 
-    public boolean setSymbol(String symbol) {
+    public boolean setSymbol(@NotNull String symbol) {
         try {
             this.symbol = symbol;
             return true;
@@ -49,10 +49,10 @@ public class Spot {
     }
 
     @Override
-    public boolean equals(@NotNull Object o) {
+    public boolean equals(Object o) {
         if (o instanceof Spot) {
-           if (getSymbol().equals(((Spot) o).symbol))
-               return true;
+            if (getSymbol().equals(((Spot) o).symbol))
+                return true;
         }
         return super.equals(o);
     }

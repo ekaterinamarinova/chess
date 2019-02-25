@@ -1,5 +1,6 @@
 package chess.board;
 
+import chess.piece.Piece;
 import chess.util.Colors;
 
 public class Board {
@@ -11,28 +12,27 @@ public class Board {
     private static void setBoard() {
         for (int row = 0; row < spots.length; row++) {
             for (int column = 0; column < spots[row].length; column++) {
-                Spot spot = new Spot();
-                int currentElementIndex = column;
+                Spot<Piece> spot = new Spot<>();
 
                 if (column % 2 != 0) {
                     if (row % 2 != 0) {
                         //fill all uneven columns
-                        spots[row][currentElementIndex] = spot;
-                        spots[row][currentElementIndex].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT+"  "+Colors.RESET);
+                        spots[row][column] = spot;
+                        spots[row][column].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT + "  " + Colors.RESET);
                     } else {
                         //fill all even columns
-                        spots[row][currentElementIndex] = spot;
-                        spots[row][currentElementIndex].setSymbol("  ");
+                        spots[row][column] = spot;
+                        spots[row][column].setSymbol("  ");
                     }
                 } else { //if column is even
                     if (row % 2 == 0) {
                         //fill all uneven columns
-                        spots[row][currentElementIndex] = spot;
-                        spots[row][currentElementIndex].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT+"  "+Colors.RESET);
+                        spots[row][column] = spot;
+                        spots[row][column].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT + "  " + Colors.RESET);
                     } else {
                         //fill all even columns
-                        spots[row][currentElementIndex] = spot;
-                        spots[row][currentElementIndex].setSymbol("  ");
+                        spots[row][column] = spot;
+                        spots[row][column].setSymbol("  ");
                     }
                 }
             }
@@ -44,14 +44,14 @@ public class Board {
     /**
      * Fills the boards' spots with pieces
      */
-    public static void fillBoard() {
+    private static void fillBoard() {
         for (int col = 0; col < spots.length; col++) {
             for (int row = 0; row < spots[col].length; row++) {
 
                 /*putting the pieces on the board*/
                 if (row == 1 || row == 6) {
-                    spots[1][col].setSymbol(Colors.BLUE_UNDERLINED +"P."+ Colors.RESET);
-                    spots[6][col].setSymbol(Colors.BLACK_UNDERLINED +"P." + Colors.RESET);
+                    spots[1][col].setSymbol(Colors.BLUE_UNDERLINED + "P." + Colors.RESET);
+                    spots[6][col].setSymbol(Colors.BLACK_UNDERLINED + "P." + Colors.RESET);
                 }
 
                 if (row == 0 || row == 7) {
@@ -59,6 +59,7 @@ public class Board {
                     spots[row][0].setSymbol("R.");
                     spots[row][7].setSymbol("R.");
 
+                    //TODO: Set colors trough the setter of the Piece object, in the color field
                     spots[row][1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
                     spots[row][6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
 
@@ -67,8 +68,6 @@ public class Board {
 
                     spots[row][3].setSymbol(Colors.CYAN + "Q." + Colors.RESET);
                     spots[row][4].setSymbol(Colors.RED + "K." + Colors.RESET);
-
-                    /*color setting*/
                 }
             }
         }
@@ -92,7 +91,7 @@ public class Board {
                 System.out.print(spots[row][col].getSymbol());
             }
             //print the right column
-            System.out.println("|"+ (row + 1));
+            System.out.println("|" + (row + 1));
         }
 
         System.out.println(Colors.GREEN_UNDERLINED + "  A B C D E F G H  " + Colors.RESET);
