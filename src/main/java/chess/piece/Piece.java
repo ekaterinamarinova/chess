@@ -3,12 +3,14 @@ package chess.piece;
 import chess.board.Board;
 import chess.board.Spot;
 
-public abstract class Piece {
+public abstract class Piece<T> {
     private Board b = new Board();
 
     private Spot[][] board = b.getBoardSpots();
 
     private Spot spot = new Spot();
+
+    private String color;
 
     private String symbol = spot.getSymbol();
 
@@ -38,5 +40,13 @@ public abstract class Piece {
 
     public Spot getSpot() {
         return spot;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public String getColor() {
+        return color;
     }
 }

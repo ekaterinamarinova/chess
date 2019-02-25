@@ -10,11 +10,20 @@ public class Spot {
     private Piece piece;
 
     public Spot(){
-        this.symbol = "|_|";
+        this.symbol = "| ";
     }
 
     public Spot(String symbol) {
         this.symbol = symbol;
+    }
+
+    public Spot(Piece piece) {
+        this.piece = piece;
+    }
+
+    public Spot(String symbol, Piece piece) {
+        this.symbol = symbol;
+        this.piece = piece;
     }
 
     public void setPiece(Piece piece) {

@@ -1,5 +1,7 @@
 package chess.board;
 
+import chess.util.Colors;
+
 public class Board {
     private static Spot[][] spots = new Spot[8][8];
 
@@ -10,39 +12,63 @@ public class Board {
         for (int row = 0; row < spots.length; row++) {
             for (int column = 0; column < spots[row].length; column++) {
                 Spot spot = new Spot();
+                int currentElementIndex = column;
 
-                /*creating an empty board first*/
                 if (column % 2 != 0) {
-                    spots[row][column] = spot;
-                    spots[row][column].setSymbol("X");
-                } else {
-                    spots[row][column] = spot;
-                    spots[row][column].setSymbol("| |");
+                    if (row % 2 != 0) {
+                        //fill all uneven columns
+                        spots[row][currentElementIndex] = spot;
+                        spots[row][currentElementIndex].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT+"  "+Colors.RESET);
+                    } else {
+                        //fill all even columns
+                        spots[row][currentElementIndex] = spot;
+                        spots[row][currentElementIndex].setSymbol("  ");
+                    }
+                } else { //if column is even
+                    if (row % 2 == 0) {
+                        //fill all uneven columns
+                        spots[row][currentElementIndex] = spot;
+                        spots[row][currentElementIndex].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT+"  "+Colors.RESET);
+                    } else {
+                        //fill all even columns
+                        spots[row][currentElementIndex] = spot;
+                        spots[row][currentElementIndex].setSymbol("  ");
+                    }
                 }
             }
         }
 
+        fillBoard();
+    }
+
+    /**
+     * Fills the boards' spots with pieces
+     */
+    public static void fillBoard() {
         for (int col = 0; col < spots.length; col++) {
             for (int row = 0; row < spots[col].length; row++) {
 
-                ///*putting the pieces on the board*/
+                /*putting the pieces on the board*/
                 if (row == 1 || row == 6) {
-                    spots[row][col].setSymbol("|P");
+                    spots[1][col].setSymbol(Colors.BLUE_UNDERLINED +"P."+ Colors.RESET);
+                    spots[6][col].setSymbol(Colors.BLACK_UNDERLINED +"P." + Colors.RESET);
                 }
 
                 if (row == 0 || row == 7) {
-                    spots[row][0].setSymbol("|R");
-                    spots[row][7].setSymbol("|R");
+                    /*symbol setting*/
+                    spots[row][0].setSymbol("R.");
+                    spots[row][7].setSymbol("R.");
 
-                    spots[row][1].setSymbol("|B");
-                    spots[row][6].setSymbol("|B");
+                    spots[row][1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
+                    spots[row][6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
 
-                    spots[row][2].setSymbol("|H");
-                    spots[row][5].setSymbol("|H");
+                    spots[row][2].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
+                    spots[row][5].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
 
-                    spots[row][3].setSymbol("|Q");
-                    spots[row][4].setSymbol("|K");
+                    spots[row][3].setSymbol(Colors.CYAN + "Q." + Colors.RESET);
+                    spots[row][4].setSymbol(Colors.RED + "K." + Colors.RESET);
 
+                    /*color setting*/
                 }
             }
         }
@@ -54,23 +80,22 @@ public class Board {
     public static void printBoard() {
         setBoard();
         //Create the top of X-axis
-        System.out.println("  A B C D E F G H  ");
+        System.out.println(Colors.GREEN_UNDERLINED + "  A B C D E F G H  " + Colors.RESET);
 
         //Creating the Y-axis
         for (int row = 0; row < spots.length; row++) {
             //print the left column
-            System.out.print(row + 1);
+            System.out.print(row + 1 + "|");
 
             //print the free middle space
             for (int col = 0; col < spots[row].length; col++) {
                 System.out.print(spots[row][col].getSymbol());
             }
             //print the right column
-            System.out.print("|");
-            System.out.println(row + 1);
+            System.out.println("|"+ (row + 1));
         }
 
-        System.out.println("  A B C D E F G H  ");
+        System.out.println(Colors.GREEN_UNDERLINED + "  A B C D E F G H  " + Colors.RESET);
     }
 
     public Spot[][] getBoardSpots() {
