@@ -1,10 +1,29 @@
 package chess.board;
 
 import chess.piece.Piece;
+import chess.piece.Rook;
 import chess.util.Colors;
 
 public class Board {
     private static Spot[][] spots = new Spot[8][8];
+
+    private Rook[] rooks = new Rook[15];
+
+    private static Board instance;
+
+    private Board(){}
+
+    static {
+        try {
+            instance = new Board();
+        } catch (Exception e) {
+            throw  new RuntimeException("Exception occured in creating singleton instance");
+        }
+    }
+
+    public static Board getInstance() {
+        return instance;
+    }
 
     /**
      * Fills the boards' spots
@@ -59,6 +78,7 @@ public class Board {
                     spots[row][0].setSymbol("R.");
                     spots[row][7].setSymbol("R.");
 
+                    //TODO: Set the pieces objects to their spots
                     //TODO: Set colors trough the setter of the Piece object, in the color field
                     spots[row][1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
                     spots[row][6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);

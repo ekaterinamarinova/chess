@@ -4,20 +4,29 @@ import chess.board.Board;
 import chess.board.Spot;
 
 public class Piece<P> {
-    private Board b = new Board();
+    private Board board =  Board.getInstance();
 
+    /**
+     * in order to obtain access to the positions of a current element on the board,
+     * we must have access to the board, therefore we acess all its current spots
+     * and their values
+     */
     private P piece;
 
-    private Spot[][] board = b.getBoardSpots();
+//    private Spot[][] board = b.getBoardSpots();
 
     private Spot<Piece<P>> spot = new Spot<>();
 
-    private String color;
+    private static String COLOR_WHITE = "white";
 
     private String symbol = spot.getSymbol();
 
-    public void move(/*Spot[][] currentBoard*/) {
+    public void move() {
         //TODO: implement movements
+    }
+
+    public void move(Spot[][] currentBoard, int x, int y){
+
     }
 
     public void kill() {
@@ -52,15 +61,7 @@ public class Piece<P> {
         return spot;
     }
 
-    public void setColor(String color) {
-        this.color = color;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public Spot[][] getBoard() {
+    public Board getBoard() {
         return board;
     }
 }
