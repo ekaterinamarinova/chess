@@ -19,6 +19,6 @@ jar {
     manifest {
         attributes("Main-Class": "chess.Main",
                 "Implementation-Title": "Gradle",
-                "Implementation-Version": version,)
+                "Implementation-Version": version)
     }
 }

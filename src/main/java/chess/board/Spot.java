@@ -26,8 +26,9 @@ public class Spot<T> {
         this.piece = piece;
     }
 
-    public void setPiece(Piece piece) {
+    public Piece<?> setPiece(Piece piece) {
         this.piece = piece;
+        return this.piece;
     }
 
     public Piece getPiece() {

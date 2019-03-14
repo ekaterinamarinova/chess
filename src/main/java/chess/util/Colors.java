@@ -1,5 +1,5 @@
 package chess.util;
-public class Colors {
+public final class Colors {
     // Reset
     public static final String RESET = "\033[0m";  // Text Reset
 

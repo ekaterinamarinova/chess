@@ -28,10 +28,11 @@ public class Board {
     /**
      * Fills the boards' spots
      */
-    private static void setBoard() {
+    public static void setBoard() {
         for (int row = 0; row < spots.length; row++) {
             for (int column = 0; column < spots[row].length; column++) {
                 Spot<Piece> spot = new Spot<>();
+                spot.setPiece(new Piece());
 
                 if (column % 2 != 0) {
                     if (row % 2 != 0) {
@@ -97,9 +98,9 @@ public class Board {
      * Prints the board in the terminal
      */
     public static void printBoard() {
-        setBoard();
+
         //Create the top of X-axis
-        System.out.println(Colors.GREEN_UNDERLINED + "  A B C D E F G H  " + Colors.RESET);
+        System.out.println(Colors.GREEN + "  A B C D E F G H  " + Colors.RESET);
 
         //Creating the Y-axis
         for (int row = 0; row < spots.length; row++) {
@@ -114,10 +115,19 @@ public class Board {
             System.out.println("|" + (row + 1));
         }
 
-        System.out.println(Colors.GREEN_UNDERLINED + "  A B C D E F G H  " + Colors.RESET);
+        System.out.println(Colors.GREEN + "  A B C D E F G H  " + Colors.RESET);
     }
 
     public Spot[][] getBoardSpots() {
         return spots;
+    }
+
+    //test
+    public static void move() {
+//        Piece p = spots[0][0].getPiece();
+//        p.move(spots, 1, 1, 0,0);
+//        System.out.println(p.getSymbol());
+        Piece p = new Piece();
+        p.move(spots);
     }
 }

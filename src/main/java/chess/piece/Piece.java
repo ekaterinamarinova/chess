@@ -11,13 +11,12 @@ public class Piece<P> {
      * we must have access to the board, therefore we acess all its current spots
      * and their values
      */
-    private P piece;
 
 //    private Spot[][] board = b.getBoardSpots();
 
-    private Spot<Piece<P>> spot = new Spot<>();
+    private Spot<Piece> spot = new Spot<>();
 
-    private static String COLOR_WHITE = "white";
+    private String color;
 
     private String symbol = spot.getSymbol();
 
@@ -25,8 +24,16 @@ public class Piece<P> {
         //TODO: implement movements
     }
 
-    public void move(Spot[][] currentBoard, int x, int y){
+    public void move(Spot[][] currentBoard){
 
+        for (Spot[] s:currentBoard) {
+
+            for (Spot b : s) {
+                System.out.println(b.getPiece().getSymbol());
+
+            }
+
+        }
     }
 
     public void kill() {
@@ -37,19 +44,11 @@ public class Piece<P> {
 
     }
 
-    public void setPiece(P piece) {
-        this.piece = piece;
-    }
-
-    public P getPiece() {
-        return piece;
-    }
-
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
-    public void setSpot(Spot<Piece<P>> spot) {
+    public void setSpot(Spot<Piece> spot) {
         this.spot = spot;
     }
 

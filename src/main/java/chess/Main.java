@@ -16,10 +16,12 @@ import chess.board.Board;
  * @see chess.piece.Queen  - the symbol is Q
  *
  * @author Ekaterina Marinova
- * @version 1.0
+ * @version 1.0.ButNotExactly
  */
 public class Main {
     public static void main(String[] args) {
+        Board.setBoard();
+       // Board.move();
         Board.printBoard();
     }
 }
