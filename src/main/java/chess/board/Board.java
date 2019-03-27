@@ -5,7 +5,8 @@ import chess.piece.Rook;
 import chess.util.Colors;
 
 public class Board {
-    private static Spot[][] spots = new Spot[8][8];
+    //TODO: Make a static setBoardSpots method to fill the two-dimensional array not to throw nullpointers
+    public static Spot[][] spots = new Spot[8][8];
 
     private Rook[] rooks = new Rook[15];
 
