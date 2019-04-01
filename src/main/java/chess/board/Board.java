@@ -5,8 +5,8 @@ import chess.piece.Rook;
 import chess.util.Colors;
 
 public class Board {
-    //TODO: Make a static setBoardSpots method to fill the two-dimensional array not to throw nullpointers
-    public static Spot[][] spots = new Spot[8][8];
+
+    private static Spot[][] spots = new Spot[8][8];
 
     private Rook[] rooks = new Rook[15];
 
@@ -18,7 +18,7 @@ public class Board {
         try {
             instance = new Board();
         } catch (Exception e) {
-            throw  new RuntimeException("Exception occured in creating singleton instance");
+            throw  new RuntimeException("Exception occurred in creating singleton instance");
         }
     }
 

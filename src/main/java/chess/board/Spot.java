@@ -1,7 +1,6 @@
 package chess.board;
 
 import chess.piece.Piece;
-import com.sun.istack.internal.NotNull;
 
 public class Spot<T> {
 
@@ -35,7 +34,7 @@ public class Spot<T> {
         return piece;
     }
 
-    public boolean setSymbol(@NotNull String symbol) {
+    public boolean setSymbol(String symbol) {
         try {
             this.symbol = symbol;
             return true;

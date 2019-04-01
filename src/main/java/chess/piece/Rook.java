@@ -5,8 +5,8 @@ import chess.board.Spot;
 public class Rook extends Piece {
 
     public Rook() {
-        setSpot(new Spot<>());
-        getSpot().setSymbol("R");
+//        setSpot(new Spot<>());
+//        getSpot().setSymbol("R");
     }
 
 //    @Override
