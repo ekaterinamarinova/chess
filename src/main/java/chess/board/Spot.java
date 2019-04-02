@@ -34,14 +34,9 @@ public class Spot<T> {
         return piece;
     }
 
-    public boolean setSymbol(String symbol) {
-        try {
-            this.symbol = symbol;
-            return true;
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-        }
-        return false;
+
+    public void setSymbol(String symbol) {
+        this.symbol = symbol;
     }
 
     public String getSymbol() {
