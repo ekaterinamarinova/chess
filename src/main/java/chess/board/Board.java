@@ -124,11 +124,11 @@ public class Board {
     }
 
     //test
-    public static void move() {
-//        Piece p = spots[0][0].getPiece();
-//        p.move(spots, 1, 1, 0,0);
-//        System.out.println(p.getSymbol());
-        Piece p = new Piece();
-        p.move(spots);
-    }
+//    public static void move() {
+////        Piece p = spots[0][0].getPiece();
+////        p.move(spots, 1, 1, 0,0);
+////        System.out.println(p.getSymbol());
+//        Piece p = new Piece();
+//        p.move(spots);
+//    }
 }

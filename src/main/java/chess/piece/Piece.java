@@ -14,26 +14,21 @@ public class Piece<P> {
 
 //    private Spot[][] board = b.getBoardSpots();
 
-    private Spot<Piece> spot = new Spot<>();
+    private Spot<Piece> spot;
 
     private String color;
 
-    private String symbol = spot.getSymbol();
+    private String symbol;
 
     public void move() {
         //TODO: implement movements
     }
 
-    public void move(Spot[][] currentBoard){
+    public void move(Spot[][] currentBoard, int oldX, int oldY /*, int newX, int newY*/){
 
-        for (Spot[] s:currentBoard) {
+        currentBoard[oldX][oldY].setPiece(new Piece());
+        System.out.println(currentBoard[oldX][oldY].getPiece());
 
-            for (Spot b : s) {
-                System.out.println(b.getPiece().getSymbol());
-
-            }
-
-        }
     }
 
     public void kill() {
@@ -79,12 +74,12 @@ public class Piece<P> {
                 piece.symbol.equals(symbol);
     }
 
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + board.hashCode();
-        result = 31 * result + spot.hashCode();
-        result = 31 * result + symbol.hashCode();
-        return result;
-    }
+//    @Override
+//    public int hashCode() {
+//        int result = 17;
+//        result = 31 * result + board.hashCode();
+//        result = 31 * result + spot.hashCode();
+//        result = 31 * result + symbol.hashCode();
+//        return result;
+//    }
 }

@@ -64,11 +64,11 @@ public class Spot<T> {
 //        return super.equals(o);
     }
 
-    @Override
-    public int hashCode() {
-        int result = 17;
-        result = 31 * result + symbol.hashCode();
-        result = 31 * result + piece.hashCode();
-        return result;
-    }
+//    @Override
+//    public int hashCode() {
+//        int result = 17;
+//        result = 31 * result + symbol.hashCode();
+//        result = 31 * result + piece.hashCode();
+//        return result;
+//    }
 }
