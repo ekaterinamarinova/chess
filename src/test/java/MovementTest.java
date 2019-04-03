@@ -8,14 +8,13 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class MovementTest {
 
-    @Mock
-    Piece piece;
+//    @Mock
+    Piece piece = new Piece();
 
     Board board = Board.getInstance();
 
     @Test
     public void testMovement() {
-
         Board.setBoard();
         //TODO: This movement method is absolute bullshit, fix it
         piece.move(board.getBoardSpots());

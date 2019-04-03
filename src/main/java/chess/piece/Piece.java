@@ -8,7 +8,7 @@ public class Piece<P> {
 
     /**
      * in order to obtain access to the positions of a current element on the board,
-     * we must have access to the board, therefore we acess all its current spots
+     * we must have access to the board, therefore we access all its current spots
      * and their values
      */
 
@@ -62,5 +62,29 @@ public class Piece<P> {
 
     public Board getBoard() {
         return board;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+
+        if (o == this) return true;
+        if (!(o instanceof Piece)) {
+            return false;
+        }
+
+        Piece piece = (Piece) o;
+
+        return  piece.board.equals(board) &&
+                piece.spot.equals(spot)  &&
+                piece.symbol.equals(symbol);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + board.hashCode();
+        result = 31 * result + spot.hashCode();
+        result = 31 * result + symbol.hashCode();
+        return result;
     }
 }

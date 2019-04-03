@@ -45,10 +45,30 @@ public class Spot<T> {
 
     @Override
     public boolean equals(Object o) {
-        if (o instanceof Spot) {
-            if (getSymbol().equals(((Spot) o).symbol))
-                return true;
+
+        if (o == this) return true;
+
+        if (!(o instanceof Spot)) {
+            return false;
         }
-        return super.equals(o);
+
+        Spot spot = (Spot) o;
+
+        return  spot.piece.equals(piece) &&
+                spot.symbol.equals(symbol);
+
+//        if (o instanceof Spot) {
+//            if (getSymbol().equals(((Spot) o).symbol))
+//                return true;
+//        }
+//        return super.equals(o);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + symbol.hashCode();
+        result = 31 * result + piece.hashCode();
+        return result;
     }
 }
