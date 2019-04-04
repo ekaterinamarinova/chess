@@ -17,7 +17,7 @@ public class MovementTest {
     public void testMovement() {
         Board.setBoard();
         //TODO: This movement method is absolute bullshit, fix it
-        piece.move(board.getBoardSpots(), 0,0);
-//        Board.printBoard();
+        piece.move(board.getBoardSpots(), 0,0,1,1);
+        Board.printBoard();
     }
 }
