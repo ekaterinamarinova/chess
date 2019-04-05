@@ -66,8 +66,11 @@ public class Board {
      * Fills the boards' spots with pieces
      */
     private static void fillBoard() {
+
         for (int col = 0; col < spots.length; col++) {
             for (int row = 0; row < spots[col].length; row++) {
+
+                Spot[] spotRow = spots[row];
 
                 /*putting the pieces on the board*/
                 if (row == 1 || row == 6) {
@@ -77,19 +80,19 @@ public class Board {
 
                 if (row == 0 || row == 7) {
                     /*symbol setting*/
-                    spots[row][0].setSymbol("R.");
-                    spots[row][7].setSymbol("R.");
+                    spotRow[0].setSymbol("R.");
+                    spotRow[7].setSymbol("R.");
 
                     //TODO: Set the pieces objects to their spots
                     //TODO: Set colors trough the setter of the Piece object, in the color field
-                    spots[row][1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
-                    spots[row][6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
+                    spotRow[1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
+                    spotRow[6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
 
-                    spots[row][2].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
-                    spots[row][5].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
+                    spotRow[2].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
+                    spotRow[5].setSymbol(Colors.PURPLE + "H." + Colors.RESET);
 
-                    spots[row][3].setSymbol(Colors.CYAN + "Q." + Colors.RESET);
-                    spots[row][4].setSymbol(Colors.RED + "K." + Colors.RESET);
+                    spotRow[3].setSymbol(Colors.CYAN + "Q." + Colors.RESET);
+                    spotRow[4].setSymbol(Colors.RED + "K." + Colors.RESET);
                 }
             }
         }
@@ -123,12 +126,4 @@ public class Board {
         return spots;
     }
 
-    //test
-//    public static void move() {
-////        Piece p = spots[0][0].getPiece();
-////        p.move(spots, 1, 1, 0,0);
-////        System.out.println(p.getSymbol());
-//        Piece p = new Piece();
-//        p.move(spots);
-//    }
 }

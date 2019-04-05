@@ -2,7 +2,6 @@ package chess.piece;
 
 import chess.board.Board;
 import chess.board.Spot;
-import chess.util.Colors;
 
 public class Piece<P> {
     private Board board =  Board.getInstance();

@@ -16,8 +16,8 @@ public class MovementTest {
     @Test
     public void testMovement() {
         Board.setBoard();
-        //TODO: This movement method is absolute bullshit, fix it
-        piece.move(board.getBoardSpots(), 0,0,1,1);
+        //TODO: Set the symbol from the Piece class not Spot
+        piece.move(board.getBoardSpots(), 0,0,5,1);
         Board.printBoard();
     }
 }
