@@ -1,15 +1,13 @@
 import chess.board.Board;
 import chess.board.Spot;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
-@RunWith(MockitoJUnitRunner.class)
 public class SetBoardTest {
 
     @Test
     public void setBoardTest() {
-        Board.setBoard();
+        Board board = Board.getInstance();
+        board.initBoard();
         Spot[][] s = Board.getInstance().getBoardSpots();
 
         for (Spot[] spot:s) {

@@ -1,25 +1,25 @@
 package chess.board;
 
+import chess.constant.Constants;
+import chess.piece.Knight;
 import chess.piece.Piece;
 import chess.piece.Rook;
 import chess.util.Colors;
 
 public class Board {
 
-    private static Spot[][] spots = new Spot[8][8];
-
-    private Rook[] rooks = new Rook[15];
-
     private static Board instance;
 
-    private Board(){}
+    private Spot[][] spots = new Spot[8][8];
+    private Rook[] rooks = new Rook[15];
+    private Knight[] knights = new Knight[1];
 
     static {
-        try {
-            instance = new Board();
-        } catch (Exception e) {
-            throw  new RuntimeException("Exception occurred in creating singleton instance");
-        }
+        instance = new Board();
+    }
+
+    private Board() {
+
     }
 
     public static Board getInstance() {
@@ -29,43 +29,45 @@ public class Board {
     /**
      * Fills the boards' spots
      */
-    public static void setBoard() {
+    public void initBoard() {
         for (int row = 0; row < spots.length; row++) {
             for (int column = 0; column < spots[row].length; column++) {
-                Spot<Piece> spot = new Spot<>();
-                spot.setPiece(new Piece());
 
+                Spot spot = new Spot();
+                spot.setPiece(new Piece());
+                spots[row][column] = spot;
+
+                //if column is uneven
                 if (column % 2 != 0) {
-                    if (row % 2 != 0) {
-                        //fill all uneven columns
-                        spots[row][column] = spot;
-                        spots[row][column].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT + "  " + Colors.RESET);
-                    } else {
-                        //fill all even columns
-                        spots[row][column] = spot;
-                        spots[row][column].setSymbol("  ");
-                    }
+                    fillColumn(row,
+                            spots[row][column],
+                            Constants.SPACE,
+                            Colors.BLACK_BACKGROUND_BRIGHT + Constants.SPACE + Colors.RESET
+                    );
+
                 } else { //if column is even
-                    if (row % 2 == 0) {
-                        //fill all uneven columns
-                        spots[row][column] = spot;
-                        spots[row][column].setSymbol(Colors.BLACK_BACKGROUND_BRIGHT + "  " + Colors.RESET);
-                    } else {
-                        //fill all even columns
-                        spots[row][column] = spot;
-                        spots[row][column].setSymbol("  ");
-                    }
+                    fillColumn(row,
+                            spots[row][column],
+                            Colors.BLACK_BACKGROUND_BRIGHT + Constants.SPACE + Colors.RESET,
+                            Constants.SPACE
+                    );
                 }
             }
         }
+    }
 
-        fillBoard();
+    private void fillColumn(int rowIndex, Spot spots, String evenSymbol, String unevenSymbol) {
+        if (rowIndex % 2 == 0) {
+            spots.setSymbol(evenSymbol);
+        } else {
+            spots.setSymbol(unevenSymbol);
+        }
     }
 
     /**
      * Fills the boards' spots with pieces
      */
-    private static void fillBoard() {
+    public void fillBoard() {
 
         for (int col = 0; col < spots.length; col++) {
             for (int row = 0; row < spots[col].length; row++) {
@@ -83,7 +85,6 @@ public class Board {
                     spotRow[0].setSymbol("R.");
                     spotRow[7].setSymbol("R.");
 
-                    //TODO: Set the pieces objects to their spots
                     //TODO: Set colors trough the setter of the Piece object, in the color field
                     spotRow[1].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
                     spotRow[6].setSymbol(Colors.YELLOW + "B." + Colors.RESET);
@@ -101,25 +102,25 @@ public class Board {
     /**
      * Prints the board in the terminal
      */
-    public static void printBoard() {
+    public void printBoard() {
 
         //Create the top of X-axis
-        System.out.println(Colors.GREEN + "  A B C D E F G H  " + Colors.RESET);
+        System.out.println(Colors.GREEN + Constants.BOARD_LETTERS + Colors.RESET);
 
         //Creating the Y-axis
         for (int row = 0; row < spots.length; row++) {
             //print the left column
-            System.out.print(row + 1 + "|");
+            System.out.print(row + 1 + Constants.LONG_BAR);
 
             //print the free middle space
             for (int col = 0; col < spots[row].length; col++) {
                 System.out.print(spots[row][col].getSymbol());
             }
             //print the right column
-            System.out.println("|" + (row + 1));
+            System.out.println(Constants.LONG_BAR + (row + 1));
         }
 
-        System.out.println(Colors.GREEN + "  A B C D E F G H  " + Colors.RESET);
+        System.out.println(Colors.GREEN + Constants.BOARD_LETTERS + Colors.RESET);
     }
 
     public Spot[][] getBoardSpots() {

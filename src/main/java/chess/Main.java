@@ -20,8 +20,9 @@ import chess.board.Board;
  */
 public class Main {
     public static void main(String[] args) {
-        Board.setBoard();
-       // Board.move();
-        Board.printBoard();
+        Board board = Board.getInstance();
+        board.initBoard();
+        board.fillBoard();
+        board.printBoard();
     }
 }

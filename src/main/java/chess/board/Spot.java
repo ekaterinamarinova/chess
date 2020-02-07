@@ -1,31 +1,21 @@
 package chess.board;
 
+import chess.constant.Constants;
 import chess.piece.Piece;
 
-public class Spot<T> {
+import java.util.Objects;
+
+public class Spot {
 
     private String symbol;
 
     private Piece piece;
 
     public Spot() {
-        this.symbol = "| ";
+        this.symbol = Constants.LONG_BAR + Constants.SPACE;
     }
 
-    public Spot(String symbol) {
-        this.symbol = symbol;
-    }
-
-    public Spot(Piece piece) {
-        this.piece = piece;
-    }
-
-    public Spot(String symbol, Piece piece) {
-        this.symbol = symbol;
-        this.piece = piece;
-    }
-
-    public Piece<?> setPiece(Piece piece) {
+    public Piece setPiece(Piece piece) {
         this.piece = piece;
         return this.piece;
     }
@@ -45,30 +35,15 @@ public class Spot<T> {
 
     @Override
     public boolean equals(Object o) {
-
-        if (o == this) return true;
-
-        if (!(o instanceof Spot)) {
-            return false;
-        }
-
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         Spot spot = (Spot) o;
-
-        return  spot.piece.equals(piece) &&
-                spot.symbol.equals(symbol);
-
-//        if (o instanceof Spot) {
-//            if (getSymbol().equals(((Spot) o).symbol))
-//                return true;
-//        }
-//        return super.equals(o);
+        return Objects.equals(symbol, spot.symbol) &&
+                Objects.equals(piece, spot.piece);
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = 17;
-//        result = 31 * result + symbol.hashCode();
-//        result = 31 * result + piece.hashCode();
-//        return result;
-//    }
+    @Override
+    public int hashCode() {
+        return Objects.hash(symbol, piece);
+    }
 }

@@ -3,25 +3,22 @@ package chess.piece;
 import chess.board.Board;
 import chess.board.Spot;
 
-public class Piece<P> {
+public class Piece {
+
+    public Piece() {
+
+    }
+
     private Board board =  Board.getInstance();
 
-    /**
-     * in order to obtain access to the positions of a current element on the board,
-     * we must have access to the board, therefore we access all its current spots
-     * and their values
-     */
-
-//    private Spot[][] board = b.getBoardSpots();
-
-    private Spot<Piece> spot;
+    private Spot spot;
 
     private String color;
 
     private String symbol;
 
     public void move() {
-        //TODO: implement movements
+
     }
 
     public void move(Spot[][] currentBoard, int oldX, int oldY , int newX, int newY){
@@ -48,19 +45,11 @@ public class Piece<P> {
 
     }
 
-    public void kill() {
-
-    }
-
-    private static void die() {
-
-    }
-
     public void setSymbol(String symbol) {
         this.symbol = symbol;
     }
 
-    public void setSpot(Spot<Piece> spot) {
+    public void setSpot(Spot spot) {
         this.spot = spot;
     }
 
@@ -91,12 +80,12 @@ public class Piece<P> {
                 piece.symbol.equals(symbol);
     }
 
-//    @Override
-//    public int hashCode() {
-//        int result = 17;
-//        result = 31 * result + board.hashCode();
-//        result = 31 * result + spot.hashCode();
-//        result = 31 * result + symbol.hashCode();
-//        return result;
-//    }
+    @Override
+    public int hashCode() {
+        int result = 17;
+        result = 31 * result + board.hashCode();
+        result = 31 * result + spot.hashCode();
+        result = 31 * result + symbol.hashCode();
+        return result;
+    }
 }
